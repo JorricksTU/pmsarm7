@@ -5,7 +5,7 @@ node_js:
 - '6'
 before_install:
 - npm install
-- node plexdserverurl.js > plexserver.url
+- node plexserverurl.js > plexserver.url
 - cat plexserver.url | xargs wget
 - wget http://dev2day.de/skeleton.tgz
 install:
