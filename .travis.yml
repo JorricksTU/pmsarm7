@@ -18,12 +18,16 @@ install:
 - cat plexserver.url | xargs basename  | awk -F '-' '{print $2"-"$3}' > version
 - sed -i "/Version:/s|[a-z_0-9\.\-]*$|$(cat version)|" skeleton/DEBIAN/control
 script: fakeroot dpkg-deb --build skeleton ./
+before_deploy:
+  - export RELEASE_PKG_FILE=$(ls *.deb)
+  - echo "deploying $RELEASE_PKG_FILE to GitHub releases"
 deploy:
   provider: releases
   api_key:
     secure: KkG1jHp1/+HynivPR5WgttGfRUuyGeMdq4ep2Y/rahCedX1wqiKdRLxgwHQtuQONobNIR2P2jzkd14/d8LnrKy+I17X2Dsxpj+LcflMCpib+k5h0FLL3mNxD61pE0wXzdYpijgxLUGJ1MzXKWOBTIXrLAqrnAahhsHpw0k/p4lxQ5TFqBZEX7CNAazN2h6Wj2h8wQPDJ+QOQwkh1gljKXgqk8r9qBLx4yX/BHJdTirge5F0HblRGvXW+KTdjXbBxQYsaJUPB0IL25xUSaqMNk7hty9lCq/tcZTNM1a1396U0jjeidr3y4Ev2JhniiqP2kz9Yf8sMYHZxOJNA7t+oX++VwYRE3c2GLcz6umHNgoUkI/R1OpvlvCs1yQO3TFlGaL2Ws3Q9QmL1ehyiAeqtCafpGSDearNc/N2joq/Mlvl7L02h9v3swJLR120Q4Sl8tUUVU2XBQNyvF/moEQeSStRMAkXPZt17bA9/P59jN9bi6zepl6YX5BWY5Oj4Tct90kRBd2DmSKr1kf7zGayrm2TU2dAfAD587VRxeKsYreOOIxctV/AKBXUX3Rb3TTfe2EfVeI8ZjBiKneEqp48I+ZGOX/n3EMqxO9LmUUE1aQlGzuTcGEDB5DahU5+8geCpxKhfWEHl7IEVgBu9Fz00mQ48G+89DRlw5vDvN7e7dR4=
   file_glob: true
-  file: plexmediaserver*.deb
+  file: "${RELEASE_PKG_FILE}"
   on:
     repo: tproenca/pmsarm7
     branch: dev
+    tags: true
