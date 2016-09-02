@@ -1,9 +1,9 @@
 {
   "package": {
       "name": "plexmediaserver",
-      "repo": "debian",
+      "repo": "pmsarm7",
       "subject": "tproenca",
-      "website_url": "www.jfrog.com",
+      "website_url": "https://tproenca.github.io/pmsarm7",
       "issue_tracker_url": "https://github.com/tproenca/pmsarm7/issues",
       "vcs_url": "https://github.com/tproenca/pmsarm7.git",
       "licenses": ["MIT"],
