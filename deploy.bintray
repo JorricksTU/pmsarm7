@@ -19,7 +19,7 @@
   },
 
   "files":
-    [{"includePattern": "plexmediaserver_.*deb", "uploadPattern": "plexmediaserver_.*deb",
+    [{"includePattern": "plexmediaserver_*deb", "uploadPattern": "plexmediaserver_*deb",
     "matrixParams": {
         "deb_distribution": "jessie",
         "deb_component": "main",
