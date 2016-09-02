@@ -13,13 +13,11 @@
   },
 
   "version": {
-      "name": "0.5",
-      "released": "2016-09-01",
-      "gpgSign": false
+      "name": "0.5"
   },
 
   "files":
-    [{"includePattern": "\(.+\.deb\)", "uploadPattern": "$1",
+    [{"includePattern": "plexmediaserver_1.1.3.2700-6f64a8d_armhf.deb", "uploadPattern": "$0",
     "matrixParams": {
         "deb_distribution": "jessie",
         "deb_component": "main",
