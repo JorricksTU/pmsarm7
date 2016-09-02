@@ -20,7 +20,9 @@ install:
 script: fakeroot dpkg-deb --build skeleton ./
 before_deploy:
 - export RELEASE_PKG_FILE=$(ls *.deb)
-- ls *.deb
+- sed -i "s/\[VERSION\]/$(cat version)/" deploy.bintray
+- sed -i "s/\[DATE\]/$(date +%Y-%m-%d)/" deploy.bintray
+- sed -i "s/\[FILE\]/$(echo ${RELEASE_PKG_FILE})/g" deploy.bintray
 deploy:
   skip_cleanup: true
   file_glob: true

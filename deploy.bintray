@@ -1,23 +1,23 @@
 {
   "package": {
-      "name": "plexmediaserver",
-      "repo": "pmsarm7",
-      "subject": "tproenca",
-      "website_url": "https://tproenca.github.io/pmsarm7",
-      "issue_tracker_url": "https://github.com/tproenca/pmsarm7/issues",
-      "vcs_url": "https://github.com/tproenca/pmsarm7.git",
-      "licenses": ["MIT"],
-      "labels": ["pms", "plexmediaserver", "armv7"],
-      "public_download_numbers": false,
-      "public_stats": false
+    "name": "plexmediaserver",
+    "repo": "pmsarm7",
+    "subject": "tproenca",
+    "website_url": "https://tproenca.github.io/pmsarm7",
+    "issue_tracker_url": "https://github.com/tproenca/pmsarm7/issues",
+    "vcs_url": "https://github.com/tproenca/pmsarm7.git",
+    "licenses": ["MIT"],
+    "labels": ["pms", "plexmediaserver", "armv7"],
+    "public_download_numbers": false,
+    "public_stats": false
   },
-
   "version": {
-      "name": "0.8"
+    "name": "[VERSION]",
+    "released": "[DATE]",
+    "gpgSign": false
   },
-
   "files":
-    [{"includePattern": "plexmediaserver_1.1.3.2700-6f64a8d_armhf.deb", "uploadPattern": ".*",
+    [{"includePattern": "[FILE]", "uploadPattern": "[FILE]",
     "matrixParams": {
         "deb_distribution": "jessie",
         "deb_component": "main",
