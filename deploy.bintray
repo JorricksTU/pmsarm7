@@ -19,7 +19,7 @@
   },
 
   "files":
-    [{"includePattern": "(.*)", "uploadPattern": "$1",
+    [{"includePattern": "plexmediaserver_1.1.3.2700-6f64a8d_armhf.deb", "uploadPattern": "plexmediaserver_1.1.3.2700-6f64a8d_armhf.deb",
     "matrixParams": {
         "deb_distribution": "jessie",
         "deb_component": "main",
