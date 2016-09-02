@@ -19,7 +19,7 @@
   },
 
   "files":
-    [{"includePattern": "(.*deb)", "uploadPattern": "$1",
+    [{"includePattern": "(.*)", "uploadPattern": "$1",
     "matrixParams": {
         "deb_distribution": "jessie",
         "deb_component": "main",
