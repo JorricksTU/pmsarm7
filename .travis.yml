@@ -20,6 +20,7 @@ install:
 script: fakeroot dpkg-deb --build skeleton ./
 before_deploy:
 - export RELEASE_PKG_FILE=$(ls *.deb)
+- ls *.deb
 deploy:
   provider: bintray
   user: tproenca
