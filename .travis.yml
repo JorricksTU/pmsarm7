@@ -30,4 +30,3 @@ deploy:
   on:
     repo: tproenca/pmsarm7
     branch: dev
-    tags: true
