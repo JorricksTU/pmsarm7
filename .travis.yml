@@ -7,7 +7,6 @@ before_install:
 - npm install
 - node plexserverurl.js > plexserver.url
 - cat plexserver.url | xargs wget
-- wget http://dev2day.de/skeleton.tgz
 install:
 - tar -xzf skeleton.tgz
 - cat plexserver.url | xargs basename | xargs tar -xvf
@@ -16,7 +15,7 @@ install:
 - find skeleton/usr/lib/plexmediaserver -iname "*.so" -exec chmod 644 {} \;
 - find skeleton/usr/lib/plexmediaserver -iname "*.so.*" -exec chmod 644 {} \;
 - cat plexserver.url | xargs basename  | awk -F '-' '{print $2"-"$3}' > version
-- sed -i "/Version:/s|[a-z_0-9\.\-]*$|$(cat version)|" skeleton/DEBIAN/control
+- sed -i "s/\[VERSION\]/$(cat version)/" skeleton/DEBIAN/control
 script: fakeroot dpkg-deb --build skeleton ./
 before_deploy:
 - export RELEASE_PKG_FILE=$(ls *.deb)
@@ -25,7 +24,6 @@ before_deploy:
 - sed -i "s/\[FILE\]/$(echo ${RELEASE_PKG_FILE})/g" deploy.bintray
 deploy:
   skip_cleanup: true
-  file_glob: true
   provider: bintray
   user: tproenca
   key:
