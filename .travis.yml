@@ -3,25 +3,18 @@ dist: trusty
 language: node_js
 node_js:
 - '6'
-before_install:
+before_script:
 - npm install
 - node plexserverurl.js > plexserver.url
 - cat plexserver.url | xargs wget
-install:
-- tar -xzf skeleton.tgz
-- cat plexserver.url | xargs basename | xargs tar -xvf
-- tar -xvf package.tgz -C skeleton/usr/lib/plexmediaserver
-- rm -r skeleton/usr/lib/plexmediaserver/dsm_config
-- find skeleton/usr/lib/plexmediaserver -iname "*.so" -exec chmod 644 {} \;
-- find skeleton/usr/lib/plexmediaserver -iname "*.so.*" -exec chmod 644 {} \;
-- cat plexserver.url | xargs basename  | awk -F '-' '{print $2"-"$3}' > version
-- sed -i "s/\[VERSION\]/$(cat version)/" skeleton/DEBIAN/control
-script: fakeroot dpkg-deb --build skeleton ./
+script: make
 before_deploy:
-- export RELEASE_PKG_FILE=$(ls *.deb)
 - sed -i "s/\[VERSION\]/$(cat version)/" deploy.bintray
 - sed -i "s/\[DATE\]/$(date +%Y-%m-%d)/" deploy.bintray
-- sed -i "s/\[FILE\]/$(echo ${RELEASE_PKG_FILE})/g" deploy.bintray
+- export RELEASE_ARMHF_FILE=$(ls dist/*armhf.deb)
+- sed -i "s/\[ARMHF_FILE\]/$(echo ${RELEASE_ARMHF_FILE})/g" deploy.bintray
+- export RELEASE_ARMEL_FILE=$(ls dist/*armel.deb)
+- sed -i "s/\[ARMEL_FILE\]/$(echo ${RELEASE_ARMEL_FILE})/g" deploy.bintray
 deploy:
   skip_cleanup: true
   provider: bintray

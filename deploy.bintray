@@ -16,13 +16,24 @@
     "released": "[DATE]",
     "gpgSign": false
   },
-  "files":
-    [{"includePattern": "[FILE]", "uploadPattern": "[FILE]",
-    "matrixParams": {
+  "files":[
+    {
+      "includePattern": "[ARMHF_FILE]",
+      "uploadPattern": "[ARMHF_FILE]",
+      "matrixParams": {
         "deb_distribution": "jessie",
         "deb_component": "main",
-        "deb_architecture": "armhf"}
-    }
-  ],
+        "deb_architecture": "armhf"
+      }
+    },
+    {
+      "includePattern": "[ARMEL_FILE]",
+      "uploadPattern": "[ARMEL_FILE]",
+      "matrixParams": {
+        "deb_distribution": "jessie",
+        "deb_component": "main",
+        "deb_architecture": "armel"
+      }
+    }],
   "publish": true
 }
