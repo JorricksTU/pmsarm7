@@ -9,7 +9,7 @@ before_script:
 - cat plexserver.url | xargs wget
 script: make
 before_deploy:
-- sed -i "s/\[VERSION\]/$(cat version)/" deploy.bintray
+- sed -i "s/\[VERSION\]/$(cat armhf.version)/" deploy.bintray
 - sed -i "s/\[DATE\]/$(date +%Y-%m-%d)/" deploy.bintray
 - export ARMHF_FILE=$(ls dist/*armhf.deb | awk -F '/' '{ print $2}')
 - sed -i "s/\[ARMHF_FILE\]/$(echo ${ARMHF_FILE})/" deploy.bintray
