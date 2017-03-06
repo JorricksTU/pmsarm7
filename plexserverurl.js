@@ -16,6 +16,12 @@ phantomjs.run('--webdriver=4444').then(program => {
   .then(function(href) {
      console.log(href);
   })
+  .selectByVisibleText('.plex-downloads-pms-platform', 'Netgear')
+  .element('//div[contains(@class, "plex-downloads-pms-releases")]//a[text()="ARM 6.x RN2xx"]')
+  .getAttribute('href')
+  .then(function(href) {
+     console.log(href);
+  })
   .end()
   .then(function(){
     program.kill();
