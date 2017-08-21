@@ -13,6 +13,15 @@ echo "deb http://dl.bintray.com/tproenca/pmsarm7 jessie main" | sudo tee /etc/ap
 ```bash
 sudo apt-get update
 sudo apt-get install plexmediaserver
+sudo nano /etc/init.d/plexmediaserver
+  (comment our the following line:)
+  test -f "/usr/lib/plexmediaserver/start.sh" || exit 0
+```
+
+### Configuration
+Modify the configuration file at /etc/default/plexmediaserver simply by
+```bash
+sudo nano /etc/default/plexmediaserver
 ```
 
 ### Thanks
